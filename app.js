@@ -1,17 +1,21 @@
-const express = require('express');
-const path = require('path');         // core module for NodeJS, no need to install
-const exphbs = require('express-handlebars');
-const methodOverride = require('method-override');
-const flash = require('connect-flash');
-const session = require('express-session');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express         = require('express');
+const path            = require('path');         // core module for NodeJS, no need to install
+const exphbs          = require('express-handlebars');
+const methodOverride  = require('method-override');
+const flash           = require('connect-flash');
+const session         = require('express-session');
+const bodyParser      = require('body-parser');
+const passport        = require('passport');
+const mongoose        = require('mongoose');
 
 const app = express();
 
 // Load routes
 const ideas = require('./routes/ideas');
 const users = require('./routes/users');
+
+// Passport config
+require('./config/passport')(passport);
 
 // map global promise - get rid of warning (not necessary on this version of mongoose)
 // mongoose.Promise = global.Promise
